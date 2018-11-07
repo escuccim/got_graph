@@ -1,0 +1,39 @@
+{% load static %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>Relationships</b>
+            </div>
+            <div class="panel-body">
+                <input type="checkbox" class="rel_toggle" id="rel_toggle" data-val="0"> Toggle All<br>
+                {% for rel in relationships %}
+                <input type="checkbox" class="rel_filter" id="rel_filter_{{ rel.id }}" data-val="{{rel.id}}" {% if rel.display %} checked="checked" {% endif %}> <span style="color: #{{ rel.color }};">{{ rel.description }}</span><br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>Houses</b>
+            </div>
+            <div class="panel-body">
+                <input type="checkbox" class="house_toggle" id="house_toggle" data-val="0" checked="checked"> Toggle All<br>
+                {% for house in houses %}
+                    <input type="checkbox" class="house_filter" id="house_filter_{{ house.id }}" data-val="{{house.id}}" checked="checked"> <span style="color: #{{house.color }}">House {{ house.name }}</span><br>
+                {% endfor %}
+                <input type="checkbox" class="house_filter" id="house_filter_0" data-val="-1" checked="checked"> <span style="color: #{{house.color }}">Other</span><br>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <img src="{% static 'images/refresh-32.png' %}" alt="Refresh graph" class="refresh_graph">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-body" style="padding: 5px;">
+             <form action="" class="form form-horizontal" method="POST" id="searchForm">
+                {% csrf_token %}
+                 <div class="form-group ui-widget">
+                    <label for="search" class="control-label col-md-3">Search: </label>
+                     <div class="col-md-9">
+                         <input type="text" class="form-control" id="search" name="text" placeholder="Search by name">
+                     </div>
+                 </div>
+             </form>
+        </div>
+    </div>
+</div>

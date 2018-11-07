@@ -1,0 +1,18 @@
+<div class="col-md-12">
+    <div class="panel panel-default padded">
+        <div class="panel-body">
+            <p class="name" id="name">{{ person.title.name }} {{ person.name }} {{ person.house.name }}</p>
+            <span class="field-label">Gender: </span><span class="info" id="gender">{{ person.gender }}</span><br>
+            <span class="field-label">Age: </span>~<span class="info" id="age">{{ person.age }} {% if person.alive == 0 %} (at death) {% endif %}</span><br>
+            <span class="field-label">Status: </span><span class="info" id="status">{% if person.alive == 1 %} Alive {% else %} Deceased {% endif %}</span>
+
+            <hr />
+            <p class="field-label">Related People:</p>
+                <div class="" id="relations">
+                    {% for relation in relations %}
+                    <span class="name-small"><a class="name_link" data-val="{{relation.target.pk}}">{{ relation.target.name }}</a></span> <span class="info">({{relation.relationship.description }})</span><br>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
