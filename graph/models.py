@@ -90,7 +90,7 @@ class Person(models.Model):
                 'alive': person.alive,
                 'house': person.house.name,
                 'color': color,
-                'house_color': "#" + person.house.color,
+                'houseColor': "#" + person.house.color,
                 'house_id': person.house.pk,
                 'major_house': person.house.major_house,
                 'title': person.title.name,
