@@ -141,7 +141,7 @@ function get_graph(){
             console.log("Error!");
             }
         });
-    return convert_data(data);
+    return data;
 }
 
 // makes ajax call for data from API, updates page
@@ -281,73 +281,6 @@ function update_node_colors(id){
 
 // load our initial data
 data = get_graph();
-
-// convert the data from the django model to a usable sigma structure
-function convert_data(data) {
-    // do the nodes
-    nodes = data.nodes;
-    sigma_nodes = [];
-    for(var i=0;i<nodes.length;i++){
-        if(nodes[i].id == selected_person){
-            color = activeColor;
-            x = 10;
-            y = 10;
-            size = activeSize;
-        } else {
-            color = '#' + nodes[i].color;
-            x = (i + 1);
-            y = Math.floor(Math.random() * 10) + 1;
-            size = defaultSize;
-        }
-
-        new_node = {
-         'id' : nodes[i].id,
-         'label' : nodes[i].name,
-         'size' :  size,
-         'x' : x,
-         'y' : y,
-         'color' : color,
-         'houseColor' : '#' + nodes[i].color,
-          border_color: activeColor,
-          labelAlignment : 'inside',
-          border_size: 2,
-          level: 2,
-          hidden: false,
-          house_id: nodes[i].house_id,
-          major_house: nodes[i].major_house,
-        }
-        sigma_nodes.push(new_node);
-    }
-
-    // do the edges
-    edges = data.edges;
-    sigma_edges = [];
-    for(var i=0;i<edges.length;i++){
-        if(edges[i].display == 1){
-            hide = false;
-        } else {
-            hide = true;
-        }
-
-        new_edge = {
-         id : i,
-         source : edges[i].source_id,
-         target : edges[i].target_id,
-         size : edges[i].weight * 2,
-         color : '#' + edges[i].color,
-         relationship_type: edges[i].relation_id,
-         hidden: hide,
-        }
-        sigma_edges.push(new_edge);
-    }
-
-    sigma_data = {
-        'nodes' : sigma_nodes,
-        'edges' : sigma_edges,
-    }
-
-    return sigma_data;
-}
 
 function create_graph(data){
   s = new sigma({

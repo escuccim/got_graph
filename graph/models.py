@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from random import randint
 
 class House(models.Model):
     name = models.CharField(max_length=100)
@@ -42,11 +43,18 @@ class Person(models.Model):
         through='Edge',
         through_fields=('source_id', 'target_id'),
     )
+
     def __unicode__(self):
-        return self.name + " " + self.house.name + " (" + self.title.name + ") "
+        string = self.name + " " + self.house.name
+        if self.title.name != " ":
+            string += " (" + self.title.name + ") "
+        return  string
 
     def __str__(self):
-        return self.name + " " + self.house.name + " (" + self.title.name + ") "
+        string = self.name + " " + self.house.name
+        if self.title.name != " ":
+            string += " (" + self.title.name + ") "
+        return string
 
     def relations(self):
         relations_set = Edge.objects.filter(source=self.pk).order_by("relationship__order")
@@ -57,23 +65,43 @@ class Person(models.Model):
     @staticmethod
     def get_all():
         all_people = Person.objects.all()
+        first_person_id = Person.objects.order_by("id").first().pk
 
         people_list = []
         for person in all_people:
-            house = person.house.name
-            color = person.house.color
+            # settings to highlight default person
+            if person.pk == first_person_id:
+                color = '#ffffff'
+                x = 10
+                y = 10
+                size = 13
+            # else use default settings
+            else:
+                color = "#" + person.house.color
+                x = randint(1, 50)
+                y = randint(1, 50)
+                size = 5
 
             dict = {
                 'id': person.pk,
-                'name': person.name,
+                'label': person.name,
                 'age': person.age,
                 'gender': person.gender,
                 'alive': person.alive,
-                'house': house,
+                'house': person.house.name,
                 'color': color,
+                'house_color': "#" + person.house.color,
                 'house_id': person.house.pk,
                 'major_house': person.house.major_house,
                 'title': person.title.name,
+                'border_color': '#ffffff',
+                'labelAlignment': 'inside',
+                'border_size': 2,
+                'level': 2,
+                'hidden': False,
+                'x': x,
+                'y': y,
+                'size': size,
             }
 
             people_list.append(dict)
@@ -116,14 +144,20 @@ class Edge(models.Model):
 
         edge_list = []
         for edge in edges:
+            if edge.relationship.display == 1:
+                hidden = False
+            else:
+                hidden = True
+
             dict = {
-                'source_id': edge.source_id,
-                'target_id': edge.target_id,
+                'id': edge.pk,
+                'source': edge.source_id,
+                'target': edge.target_id,
                 'relation': edge.relationship.description,
-                'weight': edge.relationship.weight,
-                'color': edge.relationship.color,
-                'relation_id' : edge.relationship.id,
-                'display': edge.relationship.display,
+                'size': edge.relationship.weight * 2,
+                'color': "#" + edge.relationship.color,
+                'relationship_type' : edge.relationship.id,
+                'hidden': hidden,
             }
 
             edge_list.append(dict)

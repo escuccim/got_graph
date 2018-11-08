@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph of Game of Thrones Characters</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <style type="text/css">
+        body { background: #ddd !important; }
+        .name { color: #004d80; font-size: 18px; font-weight: bold }
+        .name-small { color: #004d80; font-size: 16px; font-weight: bold }
+        .padded { padding: 10px; }
+        .field-label { font-weight: bold; font-size: 14px; }
+        #graph_container { width: 100%; height: 100%; min-height: 750px; margin: auto; };
+        .ui-autocomplete-loading {  background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;}
+        .panel { margin-bottom: 10px; }
+        .eas_container { margin: 5px; }
+    </style>
+
+</head>
+<body>
+
+    <div class="eas_container">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+{% block scripts %}
+{% endblock %}
+</html>
