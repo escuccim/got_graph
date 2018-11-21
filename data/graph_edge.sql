@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-11-08 13:09:29
+Date: 2018-11-10 13:51:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `graph_edge` (
   CONSTRAINT `graph_edge_relationship_id_8e345375_fk_graph_relationshiptype_id` FOREIGN KEY (`relationship_id`) REFERENCES `graph_relationshiptype` (`id`),
   CONSTRAINT `graph_edge_source_id_2c4cd5dd_fk_graph_person_id` FOREIGN KEY (`source_id`) REFERENCES `graph_person` (`id`),
   CONSTRAINT `graph_edge_target_id_2ec9dc10_fk_graph_person_id` FOREIGN KEY (`target_id`) REFERENCES `graph_person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=563 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=586 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of graph_edge
@@ -369,7 +369,6 @@ INSERT INTO `graph_edge` VALUES ('402', '2', '57', '5');
 INSERT INTO `graph_edge` VALUES ('403', '7', '57', '56');
 INSERT INTO `graph_edge` VALUES ('404', '6', '56', '57');
 INSERT INTO `graph_edge` VALUES ('405', '1', '56', '1');
-INSERT INTO `graph_edge` VALUES ('406', '1', '56', '40');
 INSERT INTO `graph_edge` VALUES ('407', '1', '56', '6');
 INSERT INTO `graph_edge` VALUES ('408', '1', '56', '10');
 INSERT INTO `graph_edge` VALUES ('409', '2', '56', '52');
@@ -395,7 +394,6 @@ INSERT INTO `graph_edge` VALUES ('428', '6', '60', '59');
 INSERT INTO `graph_edge` VALUES ('429', '2', '58', '38');
 INSERT INTO `graph_edge` VALUES ('430', '2', '37', '58');
 INSERT INTO `graph_edge` VALUES ('431', '2', '38', '58');
-INSERT INTO `graph_edge` VALUES ('432', '13', '61', '1');
 INSERT INTO `graph_edge` VALUES ('433', '1', '61', '6');
 INSERT INTO `graph_edge` VALUES ('434', '2', '61', '57');
 INSERT INTO `graph_edge` VALUES ('435', '1', '61', '56');
@@ -526,3 +524,22 @@ INSERT INTO `graph_edge` VALUES ('559', '6', '44', '73');
 INSERT INTO `graph_edge` VALUES ('560', '6', '44', '74');
 INSERT INTO `graph_edge` VALUES ('561', '6', '44', '75');
 INSERT INTO `graph_edge` VALUES ('562', '6', '44', '76');
+INSERT INTO `graph_edge` VALUES ('563', '5', '58', '60');
+INSERT INTO `graph_edge` VALUES ('564', '6', '58', '59');
+INSERT INTO `graph_edge` VALUES ('565', '5', '4', '57');
+INSERT INTO `graph_edge` VALUES ('566', '13', '1', '61');
+INSERT INTO `graph_edge` VALUES ('567', '7', '77', '1');
+INSERT INTO `graph_edge` VALUES ('568', '7', '77', '2');
+INSERT INTO `graph_edge` VALUES ('569', '4', '77', '3');
+INSERT INTO `graph_edge` VALUES ('570', '4', '77', '4');
+INSERT INTO `graph_edge` VALUES ('571', '4', '77', '6');
+INSERT INTO `graph_edge` VALUES ('572', '3', '77', '5');
+INSERT INTO `graph_edge` VALUES ('573', '4', '77', '7');
+INSERT INTO `graph_edge` VALUES ('578', '4', '7', '77');
+INSERT INTO `graph_edge` VALUES ('579', '3', '5', '77');
+INSERT INTO `graph_edge` VALUES ('580', '4', '6', '77');
+INSERT INTO `graph_edge` VALUES ('581', '4', '4', '77');
+INSERT INTO `graph_edge` VALUES ('582', '4', '3', '77');
+INSERT INTO `graph_edge` VALUES ('583', '6', '2', '77');
+INSERT INTO `graph_edge` VALUES ('584', '6', '1', '77');
+INSERT INTO `graph_edge` VALUES ('585', '13', '61', '1');
